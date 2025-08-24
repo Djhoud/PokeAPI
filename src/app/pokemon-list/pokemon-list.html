@@ -1,0 +1,7 @@
+<div class="pokemon-container">
+  <a *ngFor="let pokemon of pokemonList"
+    [routerLink]="['/pokemon', pokemon.name]"
+    class="pokemon-card">
+    {{ pokemon.name }}
+  </a>
+</div>
