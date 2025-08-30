@@ -1,59 +1,87 @@
-# PokedexAngular
+# 🎨 PokéDex em Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+<br>
 
-## Development server
+## ✨ **Sobre o Projeto**
 
-To start a local development server, run:
+Bem-vindo à sua nova Pokédex! Este projeto é uma aplicação web interativa construída do zero com **Angular**, projetada para consultar e exibir informações detalhadas sobre os Pokémon.
 
-```bash
-ng serve
-```
+A ideia central era criar uma experiência fluida e moderna, utilizando as melhores práticas do desenvolvimento front-end. A aplicação se conecta diretamente com a **PokeAPI** para obter dados em tempo real sobre cada Pokémon, incluindo:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Lista de Pokémon com filtro de busca** 🔍
+* **Página de detalhes completa** com:
+    * Estatísticas base
+    * Altura, peso e habilidades
+    * Tipos e fraquezas
+    * **Cadeia de evolução dinâmica** 🔗
+    * Navegação entre Pokémon (anterior/próximo)
 
-## Code scaffolding
+O design foi cuidadosamente elaborado para ser visualmente agradável, com caixas estilizadas, fundos texturizados e cores vibrantes que remetem ao universo Pokémon.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+<br>
 
-```bash
-ng generate component component-name
-```
+## 💻 **Desenvolvimento e Ferramentas**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Este projeto foi construído usando o **Angular CLI** e o **TypeScript**, o que me permitiu focar na lógica da aplicação e na experiência do usuário. O desenvolvimento foi uma jornada de aprendizado, que levou aproximadamente **uma semana** para ser concluída, desde a configuração inicial até a estilização final.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+### **Como Iniciar o Servidor Local**
 
-To build the project run:
+Para rodar a Pokédex na sua máquina, siga estes passos simples:
 
-```bash
-ng build
-```
+1.  Clone este repositório para o seu computador.
+2.  Navegue até o diretório do projeto no seu terminal.
+3.  Instale as dependências com o comando:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+    ```bash
+    npm install
+    ```
 
-## Running unit tests
+4.  Inicie o servidor de desenvolvimento:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+    ```bash
+    ng serve
+    ```
 
-```bash
-ng test
-```
+5.  Abra seu navegador e acesse `http://localhost:4200/`. A aplicação recarregará automaticamente a cada alteração nos arquivos de origem.
 
-## Running end-to-end tests
+<br>
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+### **Comandos Adicionais do Angular CLI**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+O Angular CLI possui ferramentas poderosas para acelerar o desenvolvimento.
 
-## Additional Resources
+* **Gerar um novo componente:**
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    ```bash
+    ng generate component nome-do-componente
+    ```
+
+* **Compilar para Produção:**
+
+    ```bash
+    ng build
+    ```
+
+    Isso compila a aplicação e armazena os artefatos otimizados na pasta `dist/`.
+
+* **Executar testes unitários:**
+
+    ```bash
+    ng test
+    ```
+
+    Executa os testes unitários com o [Karma](https://karma-runner.github.io).
+
+<br>
+
+---
+
+### **Recursos Adicionais**
+
+Para mais informações sobre o Angular CLI e seus comandos, visite a página oficial:
+
+> [**Visão Geral e Referência de Comandos do Angular CLI**](https://angular.dev/tools/cli)
