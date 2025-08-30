@@ -1,9 +1,75 @@
-<div *ngIf="pokemon" class="pokemon-details">
-  <h2>{{ pokemon.name | titlecase }}</h2>
-  <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
-  <p>Height: {{ pokemon.height }}</p>
-  <p>Weight: {{ pokemon.weight }}</p>
-</div>
-<div *ngIf="!pokemon">
-  <p>Loading...</p>
+<div *ngIf="pokemon" class="pokemon-details-page">
+  <div class="details-main-content">
+    <div class="left-column">
+      <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}" class="pokemon-image">
+
+      <div class="stats-card">
+        <h3>Estatísticas</h3>
+        <div class="stats-grid">
+          <div *ngFor="let stat of pokemon.stats" class="stat-item">
+            <span class="stat-name">{{ getStatName(stat.stat.name) }}</span>
+            <div class="stat-bar-container">
+              <div class="stat-bar" [style.width.%]="(stat.base_stat / 255) * 100"></div>
+            </div>
+            <span class="stat-value">{{ stat.base_stat }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="description-card">
+        <p class="pokemon-description">{{ pokemonDescription }}</p>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Altura</span>
+            <span class="info-value">{{ (pokemon.height * 0.1) | number:'1.1-1' }} m</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Categoria</span>
+            <span class="info-value">{{ pokemonCategory }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Peso</span>
+            <span class="info-value">{{ (pokemon.weight * 0.1) | number:'1.1-1' }} kg</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Habilidades</span>
+            <span class="info-value">{{ pokemon.abilities[0]?.ability.name | titlecase }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="types-card">
+        <h3>Tipo</h3>
+        <div class="type-badges-container">
+          <span *ngFor="let type of pokemon.types" class="type-badge {{ type.type.name }}">
+            {{ type.type.name | titlecase }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="evolutions-section">
+    <h2>Evoluções</h2>
+    <div class="evolution-chain">
+      <ng-container *ngIf="evolutions.length > 0; else noEvolution">
+        <ng-container *ngFor="let evolution of evolutions; let i = index">
+          <div class="evolution-stage">
+            <a [routerLink]="['/pokemon', evolution.name]">
+              <img [src]="evolution.imageUrl" alt="{{ evolution.name }}">
+              <p>{{ evolution.name | titlecase }} N° {{ evolution.id }}</p>
+              <p *ngIf="evolution.level" class="evolution-level">Nível {{ evolution.level }}</p>
+            </a>
+          </div>
+          <span *ngIf="i < evolutions.length - 1" class="evolution-arrow">&gt;</span>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #noEvolution>
+        <p>Este Pokémon não evolui.</p>
+      </ng-template>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,214 @@
+/* Paleta de cores e fontes */
+:root {
+    --primary-bg: #e5e5e5;
+    --card-bg: #ffffff;
+    --dark-text: #333333;
+    --light-text: #666666;
+    --border-color: #dcdcdc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --blue-info-bg: #3498db;
+    --blue-info-text: #ffffff;
+    --gray-card-bg: #5a5a5a;
+    --gray-card-text: #ffffff;
+    --arrow-color: #ffffff;
+
+    /* Cores dos tipos */
+    --grass: #78C850;
+    --poison: #A040A0;
+    --fire: #F08030;
+    --water: #6890F0;
+    --electric: #F8D030;
+    --normal: #A8A878;
+    --flying: #A890F0;
+    --bug: #A8B820;
+    --dark: #705848;
+    --psychic: #F85888;
+    --ice: #98D8D8;
+}
+
+/* Layout geral */
+.pokemon-details-page {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--primary-bg);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Cabeçalho de navegação */
+.navigation-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5a5a5a;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Layout das colunas */
+.details-main-content {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+/* Estilo para todos os cards */
+.details-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+/* Seção de imagem e descrição */
+.pokemon-image-main {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+.pokemon-description-card {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background-color: var(--blue-info-bg);
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(83, 83, 83);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Seção de estatísticas */
+.stats-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.stats-card h3 {
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+}
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.stat-name {
+    width: 120px;
+    color: var(--light-text);
+    font-weight: 500;
+}
+.stat-bar-container {
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    margin: 0 10px;
+}
+.stat-bar {
+    background-color: #3498db;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Seção de evoluções */
+.evolutions-section {
+    background-color:#5a5a5a;
+    color: var(--gray-card-text);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* Adicionando a textura de fundo */
+    background-image: url('https://img.freepik.com/vector-gratis/fondo-blanco-sutil-lineas-diagonales_1017-14763.jpg?semt=ais_hybrid&w=740');
+    background-repeat: repeat;
+    background-size: 1000px; /* Ajusta o tamanho da textura para não ficar muito grande */
+}
+
+.evolutions-section h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.evolution-chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.evolution-stage {
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.evolution-stage:hover {
+    transform: translateY(-5px);
+}
+
+.evolution-stage a {
+    text-decoration: none;
+    color: var(--gray-card-text);
+}
+
+.evolution-circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.evolution-stage img {
+    width: 80px;
+    height: 80px;
+}
+
+.evolution-arrow {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--arrow-color);
+}

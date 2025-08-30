@@ -1,24 +1,52 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { PokemonService } from '../pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
-  standalone: true, // <-- Esta linha é crucial
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink
+  ],
   templateUrl: './pokemon-list.html',
   styleUrls: ['./pokemon-list.css']
 })
 export class PokemonListComponent implements OnInit {
   pokemonList: any[] = [];
+  filteredPokemonList: any[] = [];
+  searchTerm: string = '';
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(
+    private pokemonService: PokemonService,
+    private cdr: ChangeDetectorRef // 1. Injete o ChangeDetectorRef aqui
+  ) { }
 
   ngOnInit(): void {
     this.pokemonService.getPokemonList().subscribe((response: any) => {
-      this.pokemonList = response.results;
+      response.results.forEach((pokemon: any) => {
+        this.pokemonService.getPokemon(pokemon.name).subscribe((details: any) => {
+          this.pokemonList.push(details);
+          this.filteredPokemonList = [...this.pokemonList];
+          this.cdr.markForCheck(); // 2. Adicione esta linha
+        });
+      });
     });
+  }
+
+  filterPokemon(): void {
+    if (!this.searchTerm) {
+      this.filteredPokemonList = [...this.pokemonList];
+      this.cdr.markForCheck(); // 3. Adicione aqui também para a busca
+      return;
+    }
+
+    this.filteredPokemonList = this.pokemonList.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+    this.cdr.markForCheck(); // 4. E aqui
   }
 }
