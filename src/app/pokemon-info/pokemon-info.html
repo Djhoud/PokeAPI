@@ -48,6 +48,15 @@
           </span>
         </div>
       </div>
+
+      <div class="weaknesses-card">
+        <h3>Fraquezas</h3>
+        <div class="type-badges-container">
+          <span *ngFor="let weakness of pokemonWeaknesses" class="type-badge {{ weakness }}">
+            {{ weakness | titlecase }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 

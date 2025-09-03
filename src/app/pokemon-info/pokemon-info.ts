@@ -2,6 +2,7 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { PokemonService } from '../pokemon';
 
 @Component({
@@ -21,6 +22,7 @@ export class PokemonInfoComponent implements OnInit {
   evolutions: any[] = [];
   pokemonDescription: string = '';
   pokemonCategory: string = '';
+  pokemonWeaknesses: string[] = [];
 
   constructor(
     private pokemonService: PokemonService,
@@ -32,20 +34,18 @@ export class PokemonInfoComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const pokemonName = params.get('name')?.toLowerCase();
       if (pokemonName) {
-        this.pokemonService.getPokemon(pokemonName).subscribe(data => {
+        this.pokemonService.getPokemon(pokemonName).subscribe((data: any) => {
           this.pokemon = data;
+          this.getPokemonWeaknesses();
 
-          this.pokemonService.getPokemonSpecies(this.pokemon.id).subscribe(speciesData => {
-            // Extrai a descrição em inglês
+          this.pokemonService.getPokemonSpecies(this.pokemon.id).subscribe((speciesData: any) => {
             const flavorText = speciesData.flavor_text_entries.find((entry: any) => entry.language.name === 'en');
             this.pokemonDescription = flavorText ? flavorText.flavor_text.replace(/\f/g, ' ') : 'Descrição não disponível.';
 
-            // Extrai a categoria (genus)
             const category = speciesData.genera.find((gen: any) => gen.language.name === 'en');
             this.pokemonCategory = category ? category.genus.replace('Pokémon', '') : 'Não disponível.';
 
-            // Busca a cadeia de evolução
-            this.pokemonService.getEvolutionChain(speciesData.evolution_chain.url).subscribe(evolutionData => {
+            this.pokemonService.getEvolutionChain(speciesData.evolution_chain.url).subscribe((evolutionData: any) => {
               this.evolutions = this.processEvolutionChain(evolutionData.chain);
               this.cdr.markForCheck();
             });
@@ -57,7 +57,6 @@ export class PokemonInfoComponent implements OnInit {
   }
 
   getStatName(statName: string): string {
-    // ... (mesma função que já temos) ...
     switch (statName) {
       case 'hp': return 'PS';
       case 'attack': return 'Ataque';
@@ -86,10 +85,25 @@ export class PokemonInfoComponent implements OnInit {
 
       evolutionArray.push(evolutionInfo);
 
-      // Mova para o próximo estágio
       currentStage = currentStage.evolves_to.length > 0 ? currentStage.evolves_to[0] : null;
     }
 
     return evolutionArray;
+  }
+
+  getPokemonWeaknesses(): void {
+    const typeRequests = this.pokemon.types.map((type: any) =>
+      this.pokemonService.getPokemonType(type.type.name)
+    );
+
+    forkJoin(typeRequests).subscribe((typeData: any) => {
+      const weaknessesSet = new Set<string>();
+      typeData.forEach((type: any) => {
+        type.damage_relations.double_damage_from.forEach((weakness: any) => {
+          weaknessesSet.add(weakness.name);
+        });
+      });
+      this.pokemonWeaknesses = Array.from(weaknessesSet);
+    });
   }
 }

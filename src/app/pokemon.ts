@@ -18,13 +18,16 @@ export class PokemonService {
     return this.http.get(`${this.apiUrl}/pokemon/${name}`);
   }
 
-  // Novo método para buscar a espécie
   getPokemonSpecies(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon-species/${id}`);
   }
 
-  // Novo método para buscar a cadeia de evolução
   getEvolutionChain(url: string): Observable<any> {
     return this.http.get(url);
+  }
+
+  // Novo método para buscar informações de tipo de um Pokémon
+  getPokemonType(typeName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/type/${typeName}`);
   }
 }

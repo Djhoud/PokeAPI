@@ -11,19 +11,6 @@
     --gray-card-bg: #5a5a5a;
     --gray-card-text: #ffffff;
     --arrow-color: #ffffff;
-
-    /* Cores dos tipos */
-    --grass: #78C850;
-    --poison: #A040A0;
-    --fire: #F08030;
-    --water: #6890F0;
-    --electric: #F8D030;
-    --normal: #A8A878;
-    --flying: #A890F0;
-    --bug: #A8B820;
-    --dark: #705848;
-    --psychic: #F85888;
-    --ice: #98D8D8;
 }
 
 /* Layout geral */
@@ -99,18 +86,18 @@
     margin: 0 auto;
 }
 
-.pokemon-description-card {
-    background-color: #f8f8f8;
-    padding: 20px;
+.description-card {
+      background-color: #f8f8f8;
     border-radius: 10px;
-    margin-top: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    background-color: var(--blue-info-bg);
+    background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
     color: rgb(83, 83, 83);
@@ -119,7 +106,7 @@
 
 /* Seção de estatísticas */
 .stats-card {
-    background-color: var(--card-bg);
+    background-color: #f8f8f8;
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -153,6 +140,77 @@
     border-radius: 5px;
 }
 
+/* Cartão da seção de tipos */
+.types-card {
+    border-radius: 10px;
+
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.types-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+/* Contêiner dos badges de tipo */
+.type-badges-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo individual para cada badge de tipo */
+.type-badge {
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: capitalize;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 80px;
+}
+
+/* Cores específicas para cada tipo de Pokémon */
+.normal { background-color: #A8A878; }
+.fire { background-color: #F08030; }
+.water { background-color: #6890F0; }
+.electric { background-color: #F8D030; }
+.grass { background-color: #78C850; }
+.ice { background-color: #98D8D8; }
+.fighting { background-color: #C03028; }
+.poison { background-color: #A040A0; }
+.ground { background-color: #E0C068; }
+.flying { background-color: #A890F0; }
+.psychic { background-color: #F85888; }
+.bug { background-color: #A8B820; }
+.rock { background-color: #B8A038; }
+.ghost { background-color: #705898; }
+.dragon { background-color: #7038F8; }
+.steel { background-color: #B8B8D0; }
+.dark { background-color: #705848; }
+.fairy { background-color: #EE99AC; }
+
+/* Cartão da seção de fraquezas */
+.weaknesses-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.weaknesses-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333333;
+    margin-bottom: 15px;
+}
 /* Seção de evoluções */
 .evolutions-section {
     background-color:#5a5a5a;
