@@ -1,3 +1,29 @@
-body{
-  background-color:#DD1234;
+/* Importação de fonte, se necessário */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos de corpo globais */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0; /* Pode manter ou remover, será coberto pela imagem */
+}
+
+/* Estilo para a borda da Pokédex */
+.pokedex-container {
+    /* REMOVIDO: background-color: #f7f7f7; */
+    border: 10px solid #a80e0e; /* Borda vermelha */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 1200px; /* Largura máxima da Pokédex */
+    margin: 30px auto; /* Centraliza na página */
+    box-sizing: border-box; /* Garante que padding e border não adicionem largura */
+
+    /* Adicionando SUA imagem de fundo */
+background-image: url('/assets/images/fundo-pokedex.png');/* <--- Substitua 'fundo-pokedex.png' pelo nome do seu arquivo */
+    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    z-index: 1;
 }
