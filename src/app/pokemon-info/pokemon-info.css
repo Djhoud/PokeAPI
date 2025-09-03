@@ -31,10 +31,17 @@
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
-    background-color: var(--primary-bg);
+    background-color: #ffffff57; /* Cor de fundo original do seu card */
     border-radius: 10px;
+    border: 5px solid #00d5ff;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
+
+    /* Imagem de fundo BEM evidente para teste */
+    background-image: url(/PokeAPI/src/assests/images/fundo-pokebola.png); /* Um círculo vermelho */
+    background-repeat: no-repeat;
+    background-position: 10% 50%; /* Ajuste a posição para ver onde ele aparece */
+    background-size: 200px; /* Tamanho considerável para ser notado */
 }
 
 /* Cabeçalho de navegação */
@@ -80,7 +87,7 @@
 .details-card {
     background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 10px rgba(224, 69, 69, 0.08);
     padding: 25px;
     margin-bottom: 20px;
 }

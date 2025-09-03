@@ -22,7 +22,7 @@ export class PokemonListComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
-    private cdr: ChangeDetectorRef // 1. Injete o ChangeDetectorRef aqui
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class PokemonListComponent implements OnInit {
         this.pokemonService.getPokemon(pokemon.name).subscribe((details: any) => {
           this.pokemonList.push(details);
           this.filteredPokemonList = [...this.pokemonList];
-          this.cdr.markForCheck(); // 2. Adicione esta linha
+          this.cdr.markForCheck();
         });
       });
     });
@@ -40,7 +40,7 @@ export class PokemonListComponent implements OnInit {
   filterPokemon(): void {
     if (!this.searchTerm) {
       this.filteredPokemonList = [...this.pokemonList];
-      this.cdr.markForCheck(); // 3. Adicione aqui também para a busca
+      this.cdr.markForCheck();
       return;
     }
 
